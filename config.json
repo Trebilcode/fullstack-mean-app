@@ -1,0 +1,30 @@
+{
+  "app": {
+    "name": "Aplicación backend para clases fantabulosos",
+    "port": 3000,
+    "bind": "0.0.0.0"
+  },
+  "database": {
+    "default": "firestore",
+    "mongodb": {
+      "databaseName": "Mi base datos",
+      "url": "mongodb://localhost:27017"
+    },
+    "firebase": {
+      "url": "https://my-cool-project-3ec7e.firebaseio.com"
+    }
+  },
+  "jwt": {
+    "secret": "bictia",
+    "timeToExpireInMinutes": 60
+  },
+  "login": {
+    "username": "admin",
+    "password": "123456",
+    "type": "Admin"
+  },
+  "SendEmailCredentials": {
+    "user": "trebilcode@gmail.com",
+    "password": "Bictia123456"
+  }
+}
