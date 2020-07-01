@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class HeroService {
-  private heroesUrl: string = 'https://contreras-bictia2.herokuapp.com/heroes';
+  private heroesUrl: string = 'https://fullstack-mean-app.herokuapp.com/heroes';
 
   constructor(private messageService: MessageService, private http: HttpClient) { }
 
