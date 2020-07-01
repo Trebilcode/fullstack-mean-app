@@ -7,6 +7,7 @@ const functions = require('firebase-functions');
 //  response.send("Hello from Firebase!");
 // });
 const functions = require("firebase-functions");
+const config = require('../config.json');
 
 // // Create and Deploy Your First Cloud Functions
 // // https://firebase.google.com/docs/functions/write-firebase-functions
@@ -27,8 +28,8 @@ exports.SendEmail = functions.firestore
     let transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: "trebilcode@gmail.com", // generated ethereal user
-        pass: "B1ct142020", // generated ethereal password
+        user: config.SendEmailCredentials.user, // generated ethereal user
+        pass: config.SendEmailCredentials.password, // generated ethereal password
       },
     });
 
