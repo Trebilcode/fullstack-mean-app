@@ -1,47 +1,27 @@
+# FirstNgApp
 
----
-__Información general :)__
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.7.
 
-- __[Classroom](https://classroom.google.com/w/OTEzNDI2MTc4Nzha/t/all)__ - Enlace para acceder al classroom
-- __[Código fuente](https://github.com/contreras-learning/cohorte2/)__ - En este repositorio encontrará por cada sesión un ejemplo del código, se tendrá un TAG por clase.
+## Development server
 
-¡Gracias por su tiempo!
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
+## Code scaffolding
 
-# Sesiones de clase:
-## Sesión 1
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
-## Sesión 2
+## Build
 
-## Sesión 3
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Sesión 4
+## Running unit tests
 
-## Sesión 5
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-## Sesión 6
+## Running end-to-end tests
 
-## Sesión 7
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Sesión 8
+## Further help
 
-## Sesión 9
-
-## Sesión 10
-
-## Sesión 11
-
-## Sesión 12
-
-## Sesión 13
-
-## Sesión 14
-
-## Sesión 15
-
-## Sesión 16
-
-## Sesión 17
-
-
-
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
