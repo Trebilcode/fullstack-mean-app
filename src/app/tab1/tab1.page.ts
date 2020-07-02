@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Directive } from '@angular/core';
 import { GeneralService } from '../services/general.service';
 import { Users } from '../model/users';
 import { Storage } from '@ionic/storage';
@@ -9,8 +9,9 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page {
+  
 
-  users: any[] = [];
+  users = [];
   currentUserEmail: string;
 
   constructor(private services: GeneralService, private storage: Storage) {}
@@ -31,5 +32,6 @@ export class Tab1Page {
   
   selectedUser(user: any) {
     this.storage.set(user.uid, user.email)
+    console.log(user.uid, user.email)
   }
 }

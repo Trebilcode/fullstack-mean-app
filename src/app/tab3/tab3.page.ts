@@ -1,18 +1,20 @@
-import { Component } from '@angular/core';
-import { Camera, CameraOptions } from "@ionic-native/camera/ngx";
+import { Component, Directive, Injectable } from '@angular/core';
+import { Camera, CameraOptions } from "@ionic-native/camera/__ivy_ngcc__/ngx";
 
 @Component({
   selector: "app-tab3",
   templateUrl: "tab3.page.html",
   styleUrls: ["tab3.page.scss"],
 })
-export class Tab3Page {
 
+@Injectable()
+export class Tab3Page {
+  
   constructor(private camera: Camera) {}
 
-  picture: any = '';
+  picture: string;
 
-  takePicture(){
+  takePicture() {
     const options: CameraOptions = {
       quality: 100,
       destinationType: this.camera.DestinationType.FILE_URI,
@@ -27,10 +29,8 @@ export class Tab3Page {
         this.picture = "data:image/jpeg;base64," + imageData;
       },
       (err) => {
-        console.log("Sorry, couldn't take a picture correctly");
+        console.error("Sorry, couldn't take a picture correctly", err);
       }
     );
   }
-
-  
 }
