@@ -4,6 +4,7 @@ module.exports = function (databaseConfig) {
     const router = express.Router();
 
     const TABLE = 'users';
+    let petsTable = '';
 
     const general = require('../utils/general')();
     let model = general.getDatabaseModel();
@@ -40,23 +41,42 @@ module.exports = function (databaseConfig) {
     });
 
     //{{SERVER}}/users/
-    //Crea un usuario
+    //Crea un usuario 
     router.post('/', function (request, response) {
-        if (general.validateLogin(request))
+        // general.validateLogin(request)
+        if (true) {
             model.create(TABLE, request.body)
                 .then((object) => {
-                    model.create((object.dogs || object.cats))
-                    .then(object => {
-                        response.send(object)
-                    });
-                    
-                    
-                }).catch((error) => {
-                    console.error(error);
-                    response.send(error);
+                    if (request.body.dogs) {
+                        let dogsTable = 'dogs'
+                        model.create(dogsTable, request.body)
+                        .then(dogsObject => {
+                            response.send({object,dogsObject})
+                        })
+                        .catch(error => {
+                            response.send(error);
+                        });
+                    } else if (request.body.cats) {
+                        let catsTable = 'cats'
+                        model.create(catsTable, request.body)
+                        .then(catsObject => {
+                            response.send({object, catsObject})
+                        })
+                        .catch(error => {
+                            response.send(error);
+                        });
+                    }
+                    console.log(object)
+                }).catch(error => {
+                    console.log(error);
                 });
-        else response.send({ error: 'No se ha enviado un token' });
-    });
+            
+                
+            }
+                    
+               
+        // else response.send({ error: 'No se ha enviado un token' });
+})
 
     //{{SERVER}}/users/:id
     //Edita un usuario
