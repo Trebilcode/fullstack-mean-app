@@ -45,7 +45,12 @@ module.exports = function (databaseConfig) {
         if (general.validateLogin(request))
             model.create(TABLE, request.body)
                 .then((object) => {
-                    response.send(object)
+                    model.create((object.dogs || object.cats))
+                    .then(object => {
+                        response.send(object)
+                    });
+                    
+                    
                 }).catch((error) => {
                     console.error(error);
                     response.send(error);

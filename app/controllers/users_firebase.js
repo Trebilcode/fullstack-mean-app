@@ -26,9 +26,18 @@ const UserFirebase = function () {
         });
     });
 
-    router.post('/', function (request, response) {
+    router.post('/', async (request, response) => {
         admin.auth().createUser(request.body).then(function (users) {
             response.send(users.uid);
+        
+            const data = {
+                name: users.petName,
+                dog: false,
+                cat: false,    
+            };
+
+            // Add a new document in collection "cities" with ID 'LA'
+            const res = await db.collection('cities').doc('LA').set(data);
         }).catch(function (error) {
             response.send(error);
         });

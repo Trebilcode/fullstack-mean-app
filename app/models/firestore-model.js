@@ -40,7 +40,7 @@ const FirestoreModel = function (firestore) {
         return new Promise((resolve, reject) => {
             firestore.collection(table).add(params)
             .then((respuesta)=>{
-                params.id = respuesta.id;
+                params.id = respuesta.id;                
                 resolve(params);
             })
             .catch((error)=>{
