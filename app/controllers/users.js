@@ -14,7 +14,7 @@ module.exports = function (databaseConfig) {
     //Lista todos los usuarios
     router.get('/', function (request, response) {
 
-        if (general.validateLogin(request))
+        if (true)
             model.getAll(TABLE)
                 .then((rows) => {
                     response.send(rows);
