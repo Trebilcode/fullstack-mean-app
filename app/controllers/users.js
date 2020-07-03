@@ -8,7 +8,7 @@ module.exports = function (databaseConfig) {
 
     const general = require('../utils/general')();
     let model = general.getDatabaseModel();
-    
+
 
     //{{SERVER}}/users/ 
     //Lista todos los usuarios
@@ -42,41 +42,36 @@ module.exports = function (databaseConfig) {
 
     //{{SERVER}}/users/
     //Crea un usuario 
-    router.post('/', function (request, response) {
+    router.post('/', async (request, response) => {
         // general.validateLogin(request)
         if (true) {
-            model.create(TABLE, request.body)
-                .then((object) => {
-                    if (request.body.dogs) {
-                        let dogsTable = 'dogs'
-                        model.create(dogsTable, request.body)
-                        .then(dogsObject => {
-                            response.send({object,dogsObject})
-                        })
-                        .catch(error => {
-                            response.send(error);
-                        });
-                    } else if (request.body.cats) {
-                        let catsTable = 'cats'
-                        model.create(catsTable, request.body)
-                        .then(catsObject => {
-                            response.send({object, catsObject})
-                        })
-                        .catch(error => {
-                            response.send(error);
-                        });
+            try {
+                const userResponse = await model.create(TABLE, request.body)
+                if (request.body.catname || request.body.dogname) {
+                    let catsTable = 'cats';
+
+                    const { catname, username, dogname } = request.body;
+                    if (catname) {
+                        const catResponse = await model.create(catsTable, { catname, username });
                     }
-                    console.log(object)
-                }).catch(error => {
-                    console.log(error);
-                });
-            
-                
+
+                    let dogsTable = 'dogs';
+
+                    if (dogname) {
+                        const dogResponse = await model.create(dogsTable, { dogname, username });
+                    }
+                }
+                console.log({ ...userResponse, ...dogResponse, ...catResponse })
             }
-                    
-               
+
+            catch {
+                error => console.log(error);
+            }
+
+
+        }
         // else response.send({ error: 'No se ha enviado un token' });
-})
+    })
 
     //{{SERVER}}/users/:id
     //Edita un usuario
@@ -140,3 +135,4 @@ module.exports = function (databaseConfig) {
 
     return router;
 }
+
