@@ -42,36 +42,29 @@ module.exports = function (databaseConfig) {
 
     //{{SERVER}}/users/
     //Crea un usuario 
-    router.post('/', async (request, response) => {
+    router.post('/', (request, response) => {
         // general.validateLogin(request)
         if (true) {
-            try {
-                const userResponse = await model.create(TABLE, request.body)
-                if (request.body.catname || request.body.dogname) {
-                    let catsTable = 'cats';
 
-                    const { catname, username, dogname } = request.body;
+            model.create(TABLE, request.body)
+                .then((object) => {
+                    const { catname, username, dogname } = object;
                     if (catname) {
-                        const catResponse = await model.create(catsTable, { catname, username });
+                        let catsTable = 'cats';
+                        model.create(catsTable, { catname, username });
                     }
-
-                    let dogsTable = 'dogs';
-
                     if (dogname) {
-                        const dogResponse = await model.create(dogsTable, { dogname, username });
+                        let dogsTable = 'dogs';
+                        model.create(dogsTable, { dogname, username });
                     }
-                }
-                console.log({ ...userResponse, ...dogResponse, ...catResponse })
-            }
-
-            catch {
-                error => console.log(error);
-            }
-
-
+                    response.send(object)
+                })
+                .catch((error) => {
+                    console.error(error);
+                    response.send(error);
+                });
         }
-        // else response.send({ error: 'No se ha enviado un token' });
-    })
+    });
 
     //{{SERVER}}/users/:id
     //Edita un usuario
