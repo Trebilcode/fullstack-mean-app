@@ -37,14 +37,23 @@ const FirestoreModel = function (firestore) {
     };
 
     this.create = async (table, params) => {
-        try {
-            const response = await firestore.collection(table).add(params)
-            params.id = response.id
-        }
-        catch {
-            error => console.log(error)
-        }
 
+
+        const doc_ref = await firestore.collection(table).add(params)
+        params.id = doc_ref.id
+        return params;
+
+
+        // return new Promise((resolve, reject) => {
+        //     firestore.collection(table).add(params)
+        //         .then((respuesta) => {
+        //             params.id = respuesta.id;
+        //             resolve(params);
+        //         })
+        //         .catch((error) => {
+        //             reject(error);
+        //         });
+        // });
     };
 
     this.update = function (table, params, id) {
