@@ -52,7 +52,7 @@ const dogsController = () => {
             console.error(error);
             response.send(error);
         });
-        };
+        });
 
     //{{SERVER}}/users/:id
     //Edita un usuario
