@@ -30,7 +30,7 @@ app.use('/classes', classesController);
 app.use('/login', loginController);
 app.use('/heroes', heroesController);
 app.use('/dogs', dogsController);
-app.use('/cats', dogsController);
+app.use('/cats', catsController);
 
 
 
