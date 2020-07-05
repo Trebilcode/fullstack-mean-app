@@ -18,6 +18,7 @@ let usersController = require('./app/controllers/users')();
 let classesController = require('./app/controllers/classes')();
 let loginController = require('./app/controllers/login')();
 let heroesController = require('./app/controllers/heroes')();
+let dogsController = require('./app/controllers/dogs')();
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -27,6 +28,7 @@ app.use('/users', usersController);
 app.use('/classes', classesController);
 app.use('/login', loginController);
 app.use('/heroes', heroesController);
+app.use('/dogs', dogsController);
 
 
 
