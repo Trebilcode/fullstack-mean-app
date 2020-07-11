@@ -1,7 +1,8 @@
 {
   "name": "pet-lovers",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

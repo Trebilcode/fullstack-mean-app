@@ -13,8 +13,10 @@
     </ion-toolbar>
   </ion-header>
 
+  <h1>Current User: {{currentUser}}</h1>
+
   <ion-list>
-    <ion-item *ngFor="let user of users">
+    <ion-item  *ngFor="let user of users" (click)="selectedUser(user)">
       <ion-label>
         <h2>{{user.username | uppercase}}</h2>
         <h4>Your dog's name {{user.dogname}}</h4>
